@@ -65,7 +65,7 @@ export const useSafeNavigateBack = () => {
 const basePathRegex = /^(?:\/?web-lexica)?/
 
 // Careful, check the tests before using this.
-const stripBasepathFromPath = (path: string) => path
+const stripBasePathFromPath = (path: string) => path
   .replace(basePathRegex, '')
   .replace(/^\//, '')
   .replace(/\/$/, '')
@@ -75,7 +75,7 @@ const stripBasepathFromPath = (path: string) => path
  *  what a normal url should have:
  *  `/singleplayer?b=...wl=...` etc
  *
- * Also validates the contents of the queary string to make sure
+ * Also validates the contents of the query string to make sure
  * nothing is missing, and that the board is a standard shape
  * 
  * Not picky about including or excluding `/web-lexica/` or `web-lexica/`
@@ -88,7 +88,7 @@ export const isValidGamePath = (gamePath: string) => {
   if (segments.length !== 2) return false
   const [basePath, queryString] = segments
 
-  const path = stripBasepathFromPath(basePath)
+  const path = stripBasePathFromPath(basePath)
   if (!['singleplayer', 'multiplayer'].includes(path)) return false
 
   const params = parseURLSearch<GameURLParams>(queryString)
@@ -101,10 +101,9 @@ export const isValidGamePath = (gamePath: string) => {
   const board = getB64DelimitedURLBoard({ board: params[GameParamMap.Board], delimiter: ',' })
   if (![4*4, 5*5, 6*6].includes(board.length)) return false
   return true
-
 }
 
 export const __test = {
   basePathRegex,
-  stripBasepathFromPath
+  stripBasePathFromPath
 }

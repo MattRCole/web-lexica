@@ -2,7 +2,7 @@ import { __test } from '../url'
 
 const {
   basePathRegex,
-  stripBasepathFromPath
+  stripBasePathFromPath
 } = __test
 
 describe('url', () => {
@@ -30,22 +30,22 @@ describe('url', () => {
     it('turns "/web-lexica/basepath/" into "basepath"', () => {
       const test = '/web-lexica/basepath/'
       const expected = 'basepath'
-      expect(stripBasepathFromPath(test)).toBe(expected)
+      expect(stripBasePathFromPath(test)).toBe(expected)
     })
     it('turns "/basepath/" into "basepath"', () => {
       const test = '/basepath/'
       const expected = 'basepath'
-      expect(stripBasepathFromPath(test)).toBe(expected)
+      expect(stripBasePathFromPath(test)).toBe(expected)
     })
     it('turns "/path/segments/" into "path/segments"', () => {
       const test = '/path/segments/'
       const expected = 'path/segments'
-      expect(stripBasepathFromPath(test)).toBe(expected)
+      expect(stripBasePathFromPath(test)).toBe(expected)
     })
     it('does not turn invalid "//path/segments//" into valid "path/segments"', () => {
       const test = '//path/segments//'
       const expected = 'path/segments'
-      expect(stripBasepathFromPath(test)).not.toBe(expected)
+      expect(stripBasePathFromPath(test)).not.toBe(expected)
     })
   })
 })
