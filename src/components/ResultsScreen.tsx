@@ -8,7 +8,7 @@ import Score from './game/Score'
 import { Rules } from '../game/rules'
 import { Score as ScoreContext } from '../game/score'
 import { makeClasses } from '../util/classes'
-import Button, { ButtonThemeType } from './Button'
+import Button, { ButtonThemeType } from '../component-lib/Button'
 
 import './ResultsScreen.css'
 import { Translations } from '../translations'

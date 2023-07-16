@@ -5,7 +5,7 @@ import { getClass } from './util'
 import { ScoreType } from '../../game/score'
 
 import Description from './Description'
-import Radio from '../Radio'
+import Radio from '../../component-lib/Radio'
 import { Translations } from '../../translations'
 
 const {

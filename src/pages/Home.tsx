@@ -11,7 +11,7 @@ import { Translations } from '../translations'
 import { useHighScore } from '../game/high-scores'
 import { useSavedGameList } from '../game/save-game'
 import MainTitle from '../components/MainTitle'
-import Button, { ButtonFontSizing } from '../components/Button'
+import Button, { ButtonFontSizing } from '../component-lib/Button'
 import { useContext } from 'react'
 
 const GameSettings = (): JSX.Element => {

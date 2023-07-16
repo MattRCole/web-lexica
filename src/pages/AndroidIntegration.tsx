@@ -1,7 +1,7 @@
 import { useCallback, useContext, useMemo } from 'react'
 import { Translations } from '../translations'
 import { useAndroidInteropSettings, AndroidDetectBehavior } from '../util/android-interop'
-import RadioList, { RadioListOption } from '../components/RadioList'
+import RadioList, { RadioListOption } from '../component-lib/RadioList'
 
 
 // const AndroidDetectSettings = (): JSX.Element => {

@@ -7,7 +7,7 @@ import { toMinutes } from 'duration-fns'
 import { TranslationsFn } from '../translations/types'
 import { Translations } from '../translations'
 
-import Svg, { SvgComponent } from './Svg'
+import Svg, { SvgComponent } from '../component-lib/Svg'
 import { useContext } from 'react'
 import { Rules, Ruleset } from '../game/rules'
 

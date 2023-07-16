@@ -3,7 +3,7 @@ import { ReactComponent as GridView } from '@material-design-icons/svg/round/gri
 import { getClass } from './util'
 
 import Description from './Description'
-import Radio from '../Radio'
+import Radio from '../../component-lib/Radio'
 import { useCallback, useContext, useState } from 'react'
 import { Translations } from '../../translations'
 

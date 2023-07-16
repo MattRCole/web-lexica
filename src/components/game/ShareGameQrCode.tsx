@@ -4,7 +4,7 @@ import constants from '../../style/constants'
 import { useCssExp } from '../../util/css-parse'
 import { ScreenOrientation, useOrientation } from '../../util/hooks'
 import { getBaseUrl } from '../../util/url'
-import QrCode from '../QrCode'
+import QrCode from '../../component-lib/QrCode'
 
 export enum Platform {
   Android = 'android',

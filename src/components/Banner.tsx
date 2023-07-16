@@ -1,7 +1,7 @@
 import { createContext, useMemo, useState, useEffect, useContext, MouseEvent } from 'react'
 import { ReactComponent as ArrowBack } from '@material-design-icons/svg/round/arrow_back.svg'
 
-import Svg, { SvgComponent } from './Svg'
+import Svg, { SvgComponent } from '../component-lib/Svg'
 
 import './Banner.css'
 import { useLocation } from 'react-router'

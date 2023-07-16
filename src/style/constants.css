@@ -1,16 +1,53 @@
 :root {
-  --font-size: clamp(1rem, min(2.5vh, 4vw), 2rem);
+  --font-size-body-m: 1rem;
+  --font-size-body-s: calc(12 / 14 * var(--font-size-body-m));
+  --font-size-body-l: calc(16 / 14 * var(--font-size-body-m));
+  
+  --font-size-label-s: calc(11 / 14 * var(--font-size-body-m));
+  --font-size-label-m: calc(12 / 14 * var(--font-size-body-m));
+  --font-size-label-l: calc(14 / 14 * var(--font-size-body-m));
+
+  --font-size-title-s: calc(14 / 14 * var(--font-size-body-m));
+  --font-size-title-m: calc(16 / 14 * var(--font-size-body-m));
+  --font-size-title-l: calc(22 / 14 * var(--font-size-body-m));
+
+  --font-size-headline-s: calc(24 / 14 * var(--font-size-body-m));
+  --font-size-headline-m: calc(28 / 14 * var(--font-size-body-m));
+  --font-size-headline-l: calc(32 / 14 * var(--font-size-body-m));
+
+  --font-size-display-s: calc(36 / 14 * var(--font-size-body-m));
+  --font-size-display-m: calc(45 / 14 * var(--font-size-body-m));
+  --font-size-display-l: calc(57 / 14 * var(--font-size-body-m));
+
+  --font-size: var(--font-size-body-m);
+  --font-size-title: var(--font-size-title-m);
+  --font-size-subscript: var(--font-size-label-m);
+
+  --font-size-xs: var(--font-size-label-s);
+  --font-size-s: var(--font-size-label-m);
+  --font-size-m: var(--font-size-body-m);
+  --font-size-l: var(--font-size-title-m);
+  --font-size-xl: var(--font-size-headline-m);
+
+
+  /* --font-size: clamp(1rem, min(2.5vh, 4vw), 2rem);
   --font-size-title: clamp(1.5rem, min(3vh, 5.25vw), 3rem);
   --font-size-subscript: clamp(0.5rem, min(2vh, 2.75vw), 1rem);
-  --font-weight-bold: bolder;
-  --font-weight-light: lighter;
 
   --font-size-xs: clamp(0.25rem, min(1.5vh, 1.50vw), 0.5rem);
   --font-size-s: clamp(0.5rem, min(2vh, 2.75vw), 1rem);
   --font-size-m: clamp(1rem, min(2.5vh, 4vw), 2rem);
   --font-size-l: clamp(1.5rem, min(3vh, 5.25vw), 3rem);
-  --font-size-xl: clamp(2rem, min(3.5vh, 6.50vw), 4rem);
+  --font-size-xl: clamp(2rem, min(3.5vh, 6.50vw), 4rem); */
 
+  --padding-xs: calc(2 / 3 * var(--font-size-xs));
+  --padding-s: calc(2 / 3 * var(--font-size-s));
+  --padding-m: calc(2 / 3 * var(--font-size-m));
+  --padding-l: calc(2 / 3 * var(--font-size-l));
+  --padding-xl: calc(2 / 3 * var(--font-size-xl));
+
+  --font-weight-bold: bolder;
+  --font-weight-light: lighter;
   --color-content-dark: #93a1a1;
   --color-content-light: #586e75;
 
@@ -26,10 +63,5 @@
   --color-green: #2aa198;
   --color-red: #dc322f;
   --color-yellow: #b58900;
-
-  --padding-xs: calc(2 / 3 * clamp(0.25rem, min(1.5vh, 1.50vw), 0.5rem));
-  --padding-s: calc(2 / 3 * clamp(0.5rem, min(2vh, 2.75vw), 1rem));
-  --padding-m: calc(2 / 3 * clamp(1rem, min(2.5vh, 4vw), 2rem));
-  --padding-l: calc(2 / 3 * clamp(1.5rem, min(3vh, 5.25vw), 3rem));
-  --padding-xl: calc(2 / 3 * clamp(2rem, min(3.5vh, 6.50vw), 4rem));
 }
+

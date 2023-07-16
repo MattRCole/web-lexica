@@ -2,7 +2,7 @@ import { useState, useCallback, useContext  } from 'react'
 import { ReactComponent as Sort } from '@material-design-icons/svg/round/sort.svg'
 
 import Description from './Description'
-import Radio from '../Radio'
+import Radio from '../../component-lib/Radio'
 
 import { getClass } from './util'
 import { Translations } from '../../translations'

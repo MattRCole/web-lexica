@@ -21,7 +21,7 @@ import './SavedGames.css'
 import { useSafeNavigateBack } from '../util/url'
 import { useBannerBadge } from '../components/Banner'
 import { logger } from '../util/logger'
-import Button from '../components/Button'
+import Button from '../component-lib/Button'
 import { Translations } from '../translations'
 
 const getTime = ({ timer }: SavedGameType) => {

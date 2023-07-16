@@ -1,0 +1,33 @@
+<html data-test-id="brave-new-tab-page" dir="ltr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>New Tab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap" rel="stylesheet">
+<script type="application/javascript">
+  const updateMCount = count => {
+    const mDiv = document.getElementById('Mdiv')
+    mDiv.textContent = (new Array(count)).fill('M').join('')
+  }
+  const updateFontSize = sizePx => {
+    const body = document.getElementsByTagName('body')[0]
+    body.setAttribute('style', 
+    `font-family: 'Segoe UI', 'Roboto', 'Oxygen'; margin: 0; font-size: ${sizePx}px`)
+  }
+
+</script>
+
+<style>
+  #root {
+    height: 100%;
+  }
+</style>
+<style data-styled="active" data-styled-version="5.3.9"></style></head>
+</head>
+<body style="font-family: 'Segoe UI', 'Roboto', 'Oxygen'; margin: 0; font-size: calc(1.1454 * 100vw / 25);">
+    <div>A</div>
+    <div>B</div>
+    <div id="Mdiv" style="width: fit-content;">MMMMMMMMMMMMMMMMMMMMMMMMM</div>
+</body></html>

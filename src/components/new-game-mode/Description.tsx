@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import Svg, { SvgComponent } from '../Svg'
+import Svg, { SvgComponent } from '../../component-lib/Svg'
 
 export type DescriptionProps = {
   title: string,

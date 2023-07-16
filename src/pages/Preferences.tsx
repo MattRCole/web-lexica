@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { ReactComponent as Language } from '@material-design-icons/svg/round/language.svg'
 import { ReactComponent as Gamepad } from '@material-design-icons/svg/round/gamepad.svg'
 import { ReactComponent as Android } from '@material-design-icons/svg/round/android.svg'
-import { SvgComponent } from '../components/Svg'
+import { SvgComponent } from '../component-lib/Svg'
 
-import Button, { ButtonFontSizing } from '../components/Button'
+import Button, { ButtonFontSizing } from '../component-lib/Button'
 import './Preferences.css'
 import { Translations } from '../translations'
 
