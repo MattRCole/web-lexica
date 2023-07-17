@@ -1,9 +1,11 @@
 import { MouseEventHandler } from 'react'
-import { makeClasses } from '../util/classes'
-import Svg, { SvgComponent } from './Svg'
 import { Link } from 'react-router-dom'
+import Svg, { SvgComponent } from './Svg'
+
+import { makeClasses } from '../util/classes'
 import { WithChildren } from '../util/types'
 import constants, { useConstants } from '../style/constants'
+import { FontSize, FontSizeModifier, PaddingSizeModifier, fontSizeStepMap } from '../style/style'
 
 import './Button.css'
 
@@ -13,11 +15,7 @@ export enum ButtonThemeType {
   Emphasis = 'emphasis'
 }
 
-export enum ButtonFontSizing {
-  Normal = 'normal',
-  Title = 'title',
-  Subscript = 'subscript'
-}
+
 
 export type ButtonProps = {
   /** @default {false} */
@@ -32,8 +30,12 @@ export type ButtonProps = {
   /** @default prompt is used */
   svgTitle?: string,
   prompt: string,
-  /** @default {ButtonFontSizing.Normal} */
-  fontSizing?: ButtonFontSizing
+  /** @default {FontSize.Body} */
+  fontSize?: FontSize
+  /** @default {FontSizeModifier.Medium} */
+  fontSizeModifier?: FontSizeModifier
+  /** @default {PaddingSizeModifier.Normal} */
+  paddingSizeModifier?: PaddingSizeModifier,
   /** @default {true} */
   nowrap?: boolean
   /** @default {false} */
@@ -50,7 +52,9 @@ const Button = (props: ButtonProps): JSX.Element => {
   const {
     svgTitle = props.prompt,
     to = '',
-    fontSizing = ButtonFontSizing.Normal,
+    fontSize = FontSize.Body,
+    fontSizeModifier = FontSizeModifier.Medium,
+    paddingSizeModifier = PaddingSizeModifier.Normal,
     themeType = ButtonThemeType.Standard,
     disabled = false,
     roundedEdges = true,
@@ -59,29 +63,32 @@ const Button = (props: ButtonProps): JSX.Element => {
   } = props
   const constants = useConstants()
   const usingLink = to !== '' && !props.disabled
-  const mainClasses = makeClasses(
-    'button-component',
-    `button-component-${themeType}`,
-    `button-component-font-size-${fontSizing}`,
-    { condition: disabled, name: 'button-component-disabled' },
-    { condition: roundedEdges, name: 'button-component-rounded-edges' },
-    { condition: nowrap, name: 'button-component-nowrap'},
-    { condition: svgToSide, true: 'button-with-svg-spread', false: 'button-with-svg-centered' }
+  const universalClasses = makeClasses(
+    themeType,
+    `font-${fontSize}`,
+    `font-mod-${fontSizeModifier}`,
+    `padding-mod-${paddingSizeModifier}`,
+    { condition: disabled, name: 'disabled' },
+    { condition: roundedEdges, name: 'rounded-edges' },
+    { condition: nowrap, name: 'nowrap'},
+    { condition: svgToSide, true: 'with-svg-spread', false: 'with-svg-centered' }
   )
 
   const contentColor = contentColors[themeType][disabled ? 'disabled' : 'enabled']
-  const svgSize = {
-    [ButtonFontSizing.Normal]: constants.fontSize,
-    [ButtonFontSizing.Subscript]: constants.fontSizeSubscript,
-    [ButtonFontSizing.Title]: constants.fontSizeTitle,
-  }[fontSizing]
+  const fontSizeStep = fontSizeStepMap[fontSize][fontSizeModifier]
+  const svgSize = constants.stepToFontSize(fontSizeStep)
 
   const Wrapper = usingLink
-    ? ({ children }: WithChildren) => <Link to={to} >{children}</Link>
+    ? ({ children }: WithChildren) => <Link
+      to={to}
+      className={makeClasses('button-component-link', universalClasses)}
+      >
+        {children}
+      </Link>
     : ({ children }: WithChildren) => <>{children}</>
 
   return <div
-    className={mainClasses}
+    className={makeClasses('button-component', universalClasses)}
     onClick={props.disabled ? undefined : props.onClick}
   >
     <Wrapper>

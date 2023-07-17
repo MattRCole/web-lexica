@@ -14,6 +14,7 @@ import { useSafeNavigateBack } from '../util/url'
 import { makeClasses } from '../util/classes'
 import { Translations } from '../translations'
 import { TranslationsFn } from '../translations/types'
+import { MaybeRender } from '../util/elements'
 
 const getPageName = (path: string, translationsFn: TranslationsFn): string => {
   const segment = path.split('/').filter(s => s.length).pop()
@@ -76,30 +77,43 @@ const makeRenderableBadge = ({ svgTitle, prompt, svg, disabled = false, onClick 
   maxWidth,
   maxHeight
 }) => {
-  const showPrompt = prompt && maxWidth / maxHeight > (prompt.length + 1)/2
+  const showPrompt = !!prompt && maxWidth / maxHeight > (prompt.length + 1)/2
   const isClickable = !disabled && onClick !== undefined
+  const styleConstants = useConstants()
+
+  const svgSize = Math.min(
+    styleConstants.fontSizeTitleM,
+    maxHeight * 0.8,
+  )
 
   const BadgeSvg = svg ? () => <Svg.Customizable
       svg={svg}
       props={{
         title: svgTitle,
         fill: disabled ? constants.colorContentLowContrastDark : constants.colorContentDark,
-        width: maxHeight * .8,
-        height: maxHeight * .8
+        width: svgSize,
+        height: svgSize,
       }}
     /> : () => <></>
   const classes = makeClasses(
     'banner-rendered-prop-badge',
-    'banner-rendered-prop-container',
+    // 'banner-rendered-prop-container',
     { condition: disabled , name: 'banner-rendered-prop-badge-disabled' },
-    { condition: isClickable, name: 'banner-rendered-prop-badge-clickable' }
+    { condition: isClickable, name: 'banner-rendered-prop-badge-clickable' },
+    { condition: showPrompt, false: 'hide-prompt', true: 'show-prompt'},
   )
 
   return <div className={classes} onClick={onClick} >
     <BadgeSvg />
-    {showPrompt ? <div className={makeClasses(
-      'banner-rendered-prop-label'
-    )}>{prompt}</div> : ''}
+    <MaybeRender
+      maybeRender={showPrompt}
+    >
+      <div
+        className={makeClasses('banner-rendered-prop-label')}
+      >
+        {prompt}
+      </div>
+    </MaybeRender>
   </div>
 }
 
@@ -132,8 +146,10 @@ const Banner = ({ toRender: RenderProp }: { toRender: Renderable }): JSX.Element
 
   const { width } = useScreenSize()
 
-  const { fontSizeTitle } = useConstants()
-  const maxHeight = fontSizeTitle
+  const styleConstants = useConstants()
+  // const { fontSizeTitleM } = useConstants()
+  const maxHeight = styleConstants.fontSizeTitleM + (2* styleConstants.fontSizeBodyM * styleConstants.paddingRatio)
+
 
   const maxWidth = width - leftBound - useCssExp`0.5vh`
 
@@ -146,7 +162,14 @@ const Banner = ({ toRender: RenderProp }: { toRender: Renderable }): JSX.Element
       className="banner-button-area"
       onClick={onClickHandler}
     >
-      <Svg.Standard svg={ArrowBack} title={translationsFn('general.back')}/>
+      <Svg.Customizable
+        svg={ArrowBack}
+        props={{
+          title: translationsFn('general.back'),
+          width: styleConstants.fontSizeTitleM,
+          height: styleConstants.fontSizeTitleM,
+        }}
+      />
     </div>
     <div className="banner-page-title">
       {pageName}

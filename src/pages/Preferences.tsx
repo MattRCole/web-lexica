@@ -4,16 +4,17 @@ import { ReactComponent as Gamepad } from '@material-design-icons/svg/round/game
 import { ReactComponent as Android } from '@material-design-icons/svg/round/android.svg'
 import { SvgComponent } from '../component-lib/Svg'
 
-import Button, { ButtonFontSizing } from '../component-lib/Button'
+import Button from '../component-lib/Button'
 import './Preferences.css'
 import { Translations } from '../translations'
+import { FontSize } from '../style/style'
 
 const PrefButton = ({ to, title, svg }: { to: string, title: string, svg: SvgComponent }) => <Button
   svgTitle={title}
   svg={svg}
   prompt={title}
   to={to}
-  fontSizing={ButtonFontSizing.Title}
+  fontSize={FontSize.Title}
   key={title}
   svgToSide
 />

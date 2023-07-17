@@ -11,44 +11,80 @@ import { Translations } from '../translations'
 import { useHighScore } from '../game/high-scores'
 import { useSavedGameList } from '../game/save-game'
 import MainTitle from '../components/MainTitle'
-import Button, { ButtonFontSizing } from '../component-lib/Button'
+import Button from '../component-lib/Button'
 import { useContext } from 'react'
+import { FontSize, FontSizeModifier, PaddingSizeModifier } from '../style/style'
 
 const GameSettings = (): JSX.Element => {
   const [ruleset] = useRulesFromStorage()
+  const fontSize = FontSize.Body
+  const fontSizeModifier = FontSizeModifier.Medium
 
   const translations = useContext(Translations)
 
   const preferences = translations.translationsFn('pages.home.preferences')
 
   return <div className="home-game-options">
-    <Button to='/preferences' svg={Settings} svgTitle={'Preferences'} prompt={preferences} />
-    <Button to='/game-modes' svg={EmojiEvents} svgTitle="Game Mode" prompt={ruleset.name} />
+    <Button
+      to='/preferences'
+      fontSize={fontSize}
+      fontSizeModifier={fontSizeModifier}
+      svg={Settings}
+      svgTitle={'Preferences'}
+      prompt={preferences}
+    />
+    <Button
+      to='/game-modes'
+      fontSize={fontSize}
+      fontSizeModifier={fontSizeModifier}
+      svg={EmojiEvents}
+      svgTitle="Game Mode"
+      prompt={ruleset.name}
+    />
   </div>
 
 }
 
 const PlayGameButtons = (): JSX.Element => {
   const savedGames = useSavedGameList()
-  const fontSizing = ButtonFontSizing.Title
+  const fontSizing = FontSize.Title
+  const fontSizeModifier = FontSizeModifier.Large
 
   const { translationsFn } = useContext(Translations)
 
   const resumeGame = <Button
     to="/saved-games"
-    fontSizing={fontSizing}
+    fontSize={fontSizing}
+    fontSizeModifier={fontSizeModifier}
     svg={Redo}
     prompt={translationsFn('pages.home.resumeGame')}
     svgToSide
   />
 
   return <div className="home-game-buttons">
-    <Button to='/singleplayer' svg={PlayCircle} fontSizing={fontSizing} prompt={translationsFn('pages.home.newGame')} svgToSide />
-    <Button to='/multiplayer' svg={GroupAdd} fontSizing={fontSizing} prompt={translationsFn('pages.home.multiplayer')} svgToSide />
+    <Button
+      to='/singleplayer'
+      svg={PlayCircle}
+      fontSize={fontSizing}
+      fontSizeModifier={fontSizeModifier}
+      paddingSizeModifier={PaddingSizeModifier.Small}
+      prompt={translationsFn('pages.home.newGame')}
+      svgToSide
+    />
+    <Button
+      to='/multiplayer'
+      svg={GroupAdd}
+      fontSize={fontSizing}
+      fontSizeModifier={fontSizeModifier}
+      paddingSizeModifier={PaddingSizeModifier.Small}
+      prompt={translationsFn('pages.home.multiplayer')}
+      svgToSide
+    />
     <Button
       to='/lexicle'
       svg={Grid}
-      fontSizing={fontSizing}
+      fontSize={fontSizing}
+      fontSizeModifier={fontSizeModifier}
       prompt={translationsFn('pages.home.tryLexicle')}
       svgToSide
     />

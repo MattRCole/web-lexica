@@ -1,23 +1,42 @@
 :root {
-  --font-size-body-m: 1rem;
-  --font-size-body-s: calc(12 / 14 * var(--font-size-body-m));
-  --font-size-body-l: calc(16 / 14 * var(--font-size-body-m));
+  --font-size-step: 1.2;
+  --font-size-0: 1rem;
+  --font-size-x1: calc(var(--font-size-0) / var(--font-size-step));
+  --font-size-x2: calc(var(--font-size-x1) / var(--font-size-step));
+  --font-size-1: calc(var(--font-size-0) * var(--font-size-step));
+  --font-size-2: calc(var(--font-size-1) * var(--font-size-step));
+  --font-size-3: calc(var(--font-size-2) * var(--font-size-step));
+  --font-size-4: calc(var(--font-size-3) * var(--font-size-step));
+  --font-size-5: calc(var(--font-size-4) * var(--font-size-step));
+  --font-size-6: calc(var(--font-size-5) * var(--font-size-step));
+  --font-size-7: calc(var(--font-size-6) * var(--font-size-step));
+  --font-size-8: calc(var(--font-size-7) * var(--font-size-step));
+  /* --font-size-3: calc(1rem * pow(var(--font-size-step), 3));
+  --font-size-4: calc(1rem * pow(var(--font-size-step), 4));
+  --font-size-5: calc(1rem * pow(var(--font-size-step), 5));
+  --font-size-6: calc(1rem * pow(var(--font-size-step), 6));
+  --font-size-7: calc(1rem * pow(var(--font-size-step), 7));
+  --font-size-8: calc(1rem * pow(var(--font-size-step), 8)); */
+
+  --font-size-body-s: var(--font-size-x1);
+  --font-size-body-m: var(--font-size-0);
+  --font-size-body-l: var(--font-size-1);
   
-  --font-size-label-s: calc(11 / 14 * var(--font-size-body-m));
-  --font-size-label-m: calc(12 / 14 * var(--font-size-body-m));
-  --font-size-label-l: calc(14 / 14 * var(--font-size-body-m));
+  --font-size-label-s: var(--font-size-x2);
+  --font-size-label-m: var(--font-size-x1);
+  --font-size-label-l: var(--font-size-0);
 
-  --font-size-title-s: calc(14 / 14 * var(--font-size-body-m));
-  --font-size-title-m: calc(16 / 14 * var(--font-size-body-m));
-  --font-size-title-l: calc(22 / 14 * var(--font-size-body-m));
+  --font-size-title-s: var(--font-size-0);
+  --font-size-title-m: var(--font-size-1);
+  --font-size-title-l: var(--font-size-2);
 
-  --font-size-headline-s: calc(24 / 14 * var(--font-size-body-m));
-  --font-size-headline-m: calc(28 / 14 * var(--font-size-body-m));
-  --font-size-headline-l: calc(32 / 14 * var(--font-size-body-m));
+  --font-size-headline-s: var(--font-size-3);
+  --font-size-headline-m: var(--font-size-4);
+  --font-size-headline-l: var(--font-size-5);
 
-  --font-size-display-s: calc(36 / 14 * var(--font-size-body-m));
-  --font-size-display-m: calc(45 / 14 * var(--font-size-body-m));
-  --font-size-display-l: calc(57 / 14 * var(--font-size-body-m));
+  --font-size-display-s: var(--font-size-6);
+  --font-size-display-m: var(--font-size-7);
+  --font-size-display-l: var(--font-size-8);
 
   --font-size: var(--font-size-body-m);
   --font-size-title: var(--font-size-title-m);
@@ -28,6 +47,8 @@
   --font-size-m: var(--font-size-body-m);
   --font-size-l: var(--font-size-title-m);
   --font-size-xl: var(--font-size-headline-m);
+
+  --padding-ratio: 2 / 3;
 
 
   /* --font-size: clamp(1rem, min(2.5vh, 4vw), 2rem);

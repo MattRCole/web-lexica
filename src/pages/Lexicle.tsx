@@ -4,7 +4,7 @@ import { useCallback, useContext, useMemo } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ReactComponent as Unchecked } from '@material-design-icons/svg/round/check_box_outline_blank.svg'
 import { ReactComponent as Checked } from '@material-design-icons/svg/round/check_box.svg'
-import Button, { ButtonFontSizing } from '../component-lib/Button'
+import Button from '../component-lib/Button'
 import MainTitle from '../components/MainTitle'
 import Random from './lexicle/Random'
 import WordOfTheDay from './lexicle/WordOfTheDay'
@@ -14,6 +14,7 @@ import { storage, useStorage } from '../util/storage'
 
 import './Lexicle.css'
 import { Translations } from '../translations'
+import { FontSize } from '../style/style'
 
 enum LocalStorage { UseWordleWords = 'use-wordle-words' }
 
@@ -30,7 +31,7 @@ const ChooseGameMode = (): JSX.Element => {
   const handleUseWordleWordList = useCallback(() => toggleUseWordleWords(defaultUseWordleWords), [defaultUseWordleWords])
 
   const basePath = useMemo(() => `/lexicle/${useWordleWords ? '/with-wordle-words' : ''}`, [useWordleWords])
-  const buttonSize = ButtonFontSizing.Title
+  const buttonSize = FontSize.Title
 
   return <div className='lexicle-choose-game-mode'>
     <div className='lexicle-title'>
@@ -41,19 +42,19 @@ const ChooseGameMode = (): JSX.Element => {
           to={`${basePath}/word-of-the-day`}
           prompt={translationsFn('pages.lexicle.wordOfTheDay')}
           svg={Calendar}
-          fontSizing={buttonSize}
+          fontSize={buttonSize}
         />
         <Button
           to={`${basePath}/random`}
           prompt={translationsFn('pages.lexicle.random')}
           svg={Shuffle}
-          fontSizing={buttonSize}
+          fontSize={buttonSize}
         />
         <Button
           onClick={handleUseWordleWordList}
           prompt={translationsFn('pages.lexicle.useWordleWordList')}
           svg={useWordleWords ? Checked : Unchecked}
-          fontSizing={buttonSize}
+          fontSize={buttonSize}
         />
       </div>
     </div>

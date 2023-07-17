@@ -15,12 +15,13 @@ import './StartScreen.css'
 import ShareGameQrCode, { Platform } from './game/ShareGameQrCode'
 import { Rules } from '../game/rules'
 import { Board } from '../game/board/hooks'
-import Button, { ButtonFontSizing, ButtonThemeType } from '../component-lib/Button'
+import Button, { ButtonThemeType } from '../component-lib/Button'
 import { TranslationsFn } from '../translations/types'
 import { isAndroidClient, memoizedRedirectToApp, useAndroidInteropSettings, redirectToApp } from '../util/android-interop'
 import { useStaticValue } from '../util/hooks'
 import { logger } from '../util/logger'
 import { MaybeRender } from '../util/elements'
+import { FontSize } from '../style/style'
 
 export type StartScreenProps = {
   handleStart: () => any
@@ -126,7 +127,7 @@ const StartScreen: React.FC<StartScreenProps> = ({
     return <div className="start-screen">
       <div className="start-screen-auto-open-in-app-button" >
         <Button
-          fontSizing={ButtonFontSizing.Title}
+          fontSize={FontSize.Title}
           onClick={handleAppRedirect}
           prompt={translationsFn('pages.multiplayer.openInAppPrompt')}
           roundedEdges
@@ -151,7 +152,7 @@ const StartScreen: React.FC<StartScreenProps> = ({
     </MaybeRender>
     <div className="start-screen-start-prompt">{translations.startGameHint}</div>
     <Button
-      fontSizing={ButtonFontSizing.Title}
+      fontSize={FontSize.Title}
       svg={PlayCircle}
       prompt={translations.startGameButtonPrompt}
       onClick={handleStart}
