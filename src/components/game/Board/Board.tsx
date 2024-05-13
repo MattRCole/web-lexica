@@ -11,6 +11,7 @@ import { ScoreType } from '../../../game/score'
 import { Guess, GuessAction, GuessActionType, GuessDispatch } from '../../../game/guess'
 import { makeClasses } from '../../../util/classes'
 import { WithChildren } from '../../../util/types'
+import { LetterHints } from '../../../game/letterHints'
 
 type LetterProps = {
   row: number,
@@ -33,6 +34,7 @@ const Letter: React.FC<LetterProps> = ({
   const { score: scoreType } = useContext(Rules)
 
   const letterScores = useContext(LetterScores)
+  const letterHints = useContext(LetterHints)
 
   const classes = makeClasses('spacer', { condition: visited, name: 'visited' }, feedbackClasses)
 
@@ -52,6 +54,7 @@ const Letter: React.FC<LetterProps> = ({
       <div className="letter">{letter.toUpperCase()}</div>
     </div>
     {showScore && <div className="board-letter-score">{getLetterScore(letter, letterScores)}</div>}
+    {true ? <div className="board-letter-hints">{letterHints[`${row}-${column}`]}</div> : ''}
   </div>
 }
 
