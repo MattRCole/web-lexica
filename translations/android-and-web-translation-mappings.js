@@ -16,6 +16,14 @@ const translationsFromWebToAndroid = {
         tag: 'string',
         name: 'new_game'
       },
+      about: {
+        tag: 'string',
+        name: 'about'
+      },
+      gameModeSelection: {
+        tag: 'string',
+        name: 'game_mode'
+      },
       preferences: new Reference('general.preferences')
     },
     preferences: {

@@ -8,6 +8,7 @@ import constants, { useConstants } from '../style/constants'
 import { FontSize, FontSizeModifier, PaddingSizeModifier, fontSizeStepMap } from '../style/style'
 
 import './Button.css'
+import { logger } from '../util/logger'
 
 export enum ButtonThemeType {
   Standard = 'standard',
@@ -77,6 +78,7 @@ const Button = (props: ButtonProps): JSX.Element => {
   const contentColor = contentColors[themeType][disabled ? 'disabled' : 'enabled']
   const fontSizeStep = fontSizeStepMap[fontSize][fontSizeModifier]
   const svgSize = constants.stepToFontSize(fontSizeStep)
+  logger.debug({ svgSize, svgTitle })
 
   const Wrapper = usingLink
     ? ({ children }: WithChildren) => <Link

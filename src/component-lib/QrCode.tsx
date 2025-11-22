@@ -1,4 +1,5 @@
 import Qr from 'qrcode-generator'
+import { useMemo } from 'react'
 
 import './QrCode.css'
 
@@ -38,11 +39,14 @@ const applyProps = ({ size, colors }: { size?: number, colors?: Colors}, svg: st
 
 const QrCode = (props: QrCodeProps): JSX.Element => {
   const { info } = props
-  const qr = Qr(0, 'M')
-  qr.addData(info)
-  qr.make()
-  const svg = applyProps(props, qr.createSvgTag())
+  const qr = useMemo(() => {
+      const qr = Qr(0, 'M')
+      qr.addData(info)
+      qr.make()
+      return qr
+  }, [info])
 
+  const svg = applyProps(props, qr.createSvgTag())
   return <div className="qr-code" dangerouslySetInnerHTML={{ __html: svg }}/>
 }
 

@@ -44,7 +44,7 @@ const ShareGameQrCode = ({
 
   const landscapeSize = useCssExp`min(50vw, 55vh)`
 
-  const portraitSize = useCssExp`min(95vw, 55vh)`
+  const portraitSize = useCssExp`min(85vw, 55vh)`
 
   const size = orientation === ScreenOrientation.Landscape ? landscapeSize : portraitSize
 

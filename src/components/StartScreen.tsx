@@ -108,8 +108,6 @@ const StartScreen: React.FC<StartScreenProps> = ({
 
   const languageTitle = languageTitlesFn(language as any)
 
-  const qrCode = showQrCode === true && <ShareGameQrCode {...{ rules, language, board, platform: Platform.Android }}/>
-
   const { autoAppRedirect } = useAndroidInteropSettings()
 
   const showBigRedirectButton = useStaticValue(!showQrCode && autoAppRedirect)
@@ -141,15 +139,37 @@ const StartScreen: React.FC<StartScreenProps> = ({
   return <div className="start-screen">
     <div className="start-screen-title">{pageTitle}</div>
     <div className="start-screen-language">{languageTitle}</div>
-    <GameModeDetails/>
-    <div className="start-screen-action-bar">
-      <div className="start-screen-word-count">{wordCount}</div>
-      {showRefreshButton && <Button onClick={handleBoardRefresh} prompt='Refresh Board' svg={Refresh} />}
+    <div className="start-screen-split-screen-helper">
+      <div className="start-screen-side-a">
+        <div className="start-screen-game-mode-title">
+          {rules.name}
+        </div>
+        <GameModeDetails/>
+        <div className="start-screen-action-bar">
+          <div className="start-screen-word-count">{wordCount}</div>
+          <MaybeRender
+            maybeRender={showRefreshButton}
+          >
+            <Button onClick={handleBoardRefresh} prompt='Refresh Board' svg={Refresh} />
+          </MaybeRender>
+        </div>
+      </div>
+      <div className="start-screen-side-b">
+        <MaybeRender maybeRender={!loading && showQrCode} >
+          <div className="start-screen-share-game-qr-code">
+            <ShareGameQrCode
+              rules={rules}
+              language={language}
+              board={board}
+              platform={Platform.Android}
+            />
+          </div>
+        </MaybeRender>
+        <MaybeRender maybeRender={showAppRedirectOption} >
+          <RedirectToAndroid handleRedirect={handleAppRedirect} />
+        </MaybeRender>
+      </div>
     </div>
-    <div className="start-screen-share-game-qr-code">{!loading && qrCode}</div>
-    <MaybeRender maybeRender={showAppRedirectOption} >
-      <RedirectToAndroid handleRedirect={handleAppRedirect} />
-    </MaybeRender>
     <div className="start-screen-start-prompt">{translations.startGameHint}</div>
     <Button
       fontSize={FontSize.Title}

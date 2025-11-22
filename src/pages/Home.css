@@ -24,8 +24,6 @@
 
 .home-game-buttons {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
   align-items: center;
   width: 100%;
 }
@@ -42,6 +40,82 @@
 .home-game-options>div:first-child {
   margin-inline-end: 0.5rem;
 }
+
+.home-side-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.home-side-a,
+.home-side-b {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.home-game-buttons-side-a,
+.home-game-buttons-side-b {
+  display: flex;
+}
+@media screen and (orientation: landscape) {
+  .home-side-container {
+    flex-direction: row;
+  }
+  .home-side-a,
+  .home-side-b {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-game-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .home-game-buttons-side-a,
+  .home-game-buttons-side-b {
+    flex-direction: row;
+    width: 100%;
+  }
+  .home-game-buttons-side-a>div,
+  .home-game-buttons-side-b>div {
+    margin-inline-end: 1vw;
+  }
+  .home-game-buttons-side-a>div:last-child,
+  .home-game-buttons-side-b>div:last-child {
+    margin-inline-end: 0;
+  }
+
+  .home-game-buttons-side-b>:first-child:last-child {
+    width: 100%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .home-side-container {
+    flex-direction: column;
+  }
+}
+/* .home>.main-title {
+  margin-top: auto;
+}
+
+.home-landscape {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.home-side-a,
+.home-side-b {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+} */
 
 .home-buttons-container {
   display: flex;
