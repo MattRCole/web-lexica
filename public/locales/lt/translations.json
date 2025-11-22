@@ -4,7 +4,9 @@
       "newGame": "Naujas žaidimas",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "Apie",
+      "gameModeSelection": "Žaidimo režimas"
     },
     "newGameMode": {
       "gameModeName": {
@@ -31,13 +33,14 @@
       "wordCount_other": "{{count}} žodžių"
     },
     "lexicons": {
-      "title": "Žodynas",
+      "title": "$t(general.lexicon)",
       "isBeta": "Beta"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

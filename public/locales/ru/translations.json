@@ -4,7 +4,9 @@
       "newGame": "Новая игра",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "О программе",
+      "gameModeSelection": "Игровой режим"
     },
     "newGameMode": {
       "gameModeName": {
@@ -31,13 +33,14 @@
       "wordCount_other": "{{count}} слов"
     },
     "lexicons": {
-      "title": "Словарь",
+      "title": "$t(general.lexicon)",
       "isBeta": "Бета"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

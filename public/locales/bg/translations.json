@@ -4,7 +4,8 @@
       "newGame": "Нова Игра",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "Относно"
     },
     "newGameMode": {
       "timeLimit": {
@@ -18,12 +19,13 @@
       }
     },
     "lexicons": {
-      "title": "Речник"
+      "title": "$t(general.lexicon)"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

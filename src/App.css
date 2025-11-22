@@ -43,3 +43,25 @@
     transform: rotate(360deg);
   }
 }
+
+/*////////////// Delete ME! /////////////// */
+
+.drawer-test {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.top, .bottom {
+  width: 100%;
+}
+
+.left, .right {
+  height: 100%
+}
+
+.top, .bottom, .left, .right {
+  background-color: var(--color-background-light-alt)
+}

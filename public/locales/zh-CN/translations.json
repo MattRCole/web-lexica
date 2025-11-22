@@ -4,7 +4,9 @@
       "newGame": "新游戏",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "关于游戏",
+      "gameModeSelection": "游戏模式"
     },
     "newGameMode": {
       "gameModeName": {
@@ -30,13 +32,14 @@
       "wordCount_other": "{{count}} 单词"
     },
     "lexicons": {
-      "title": "词典",
+      "title": "$t(general.lexicon)",
       "isBeta": "测试中"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

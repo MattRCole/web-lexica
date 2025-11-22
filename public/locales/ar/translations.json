@@ -4,7 +4,8 @@
       "newGame": "لعبة جديدة",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "عنْ"
     },
     "newGameMode": {
       "timeLimit": {
@@ -17,12 +18,13 @@
       }
     },
     "lexicons": {
-      "title": "القاموس"
+      "title": "$t(general.lexicon)"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

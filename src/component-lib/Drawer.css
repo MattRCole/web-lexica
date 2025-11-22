@@ -1,0 +1,50 @@
+@import "../style/constants.css";
+
+.drawer-component {
+  position: absolute;
+  z-index: 10;
+  transition: 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.drawer-component.left-to-right {
+  left: 0;
+}
+.drawer-component.right-to-left {
+  right: 0;
+}
+.drawer-component.top-to-bottom {
+  top: 0;
+}
+.drawer-component.bottom-to-top {
+  bottom: 0;
+}
+
+.drawer-component.drawer-inactive {
+  opacity: 0;
+}
+
+.drawer-component.drawer-active {
+  opacity: 1;
+}
+.drawer-component.drawer-inactive.left-to-right {
+  transform: translateX(-130%);
+}
+.drawer-component.drawer-inactive.right-to-left {
+  transform: translateX(130%);
+}
+.drawer-component.drawer-inactive.top-to-bottom {
+  transform: translateY(-130%);
+}
+.drawer-component.drawer-inactive.bottom-to-top {
+  transform: translateY(130%);
+}
+.home-additional-details-drawer.drawer-active {
+  transition: 0.25s;
+  transition-timing-function: ease-in;
+  transform: translateX(0);
+}
+.home-additional-details-drawer-lexicons {
+  overflow-y: scroll;
+  height: 100%;
+}

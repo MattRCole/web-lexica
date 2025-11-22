@@ -1,4 +1,5 @@
 import { useCallback, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Add } from '@material-design-icons/svg/round/add.svg'
 
 import { Ruleset, Rulesets, setCurrentRuleset, useRulesets, useRulesFromStorage } from '../game/rules'
@@ -6,15 +7,15 @@ import GameModeDetails from '../components/GameModeDetails'
 import constants, { useConstants } from "../style/constants"
 import { makeClasses } from '../util/classes'
 import { useBannerBadge } from '../components/Banner'
-import { useNavigate } from 'react-router-dom'
+import { Translations } from '../translations'
 import { logger } from '../util/logger'
+import { RMouseEvent } from '../util/elements'
 
 import './GameModes.css'
-import { Translations } from '../translations'
 
 type ModeProps = {
   rulesetTuple: [string, Ruleset]
-  handleOnClick: (id: string) =>  void,
+  handleOnClick: (id: string, event: RMouseEvent) =>  void,
   isSelected: boolean
 }
 
@@ -35,7 +36,7 @@ const Mode = ({
 
   return <div
     className={classNames}
-    onClick={() => handleOnClick(id)}
+    onClick={(e) => handleOnClick(id, e)}
   >
     <div className="game-mode-ruleset-name">
       {ruleset.name}
@@ -51,7 +52,7 @@ const Mode = ({
 type ModesListProps = {
   rulesets: Rulesets,
   selectedRulesetId: string
-  handleOnClick: (id: string) => void
+  handleOnClick: (id: string, event: RMouseEvent) => void
 }
 
 const ModesList = ({
@@ -75,7 +76,8 @@ const ModesList = ({
   </div>
 }
 
-const GameModes = (): JSX.Element => {
+const GameModes = (props: { onSelect?: (gameModeId: string, event: RMouseEvent) => void }): JSX.Element => {
+  const { onSelect: onClickProp } = props
   const { translationsFn } = useContext(Translations)
 
   const rulesets = useRulesets()
@@ -92,14 +94,14 @@ const GameModes = (): JSX.Element => {
   })
 
 
-  const handleOnClick = useCallback((id: string) => {
+  const handleOnClick = useCallback((id: string, e: RMouseEvent) => {
     if (id === selectedRulesetId) {
-      navigate('/')
+      onClickProp ? onClickProp(id, e) : navigate('/')
       return
     }
 
     setCurrentRuleset(id)
-  }, [selectedRulesetId, navigate])
+  }, [selectedRulesetId, navigate, onClickProp])
 
   return <div className="Page game-modes">
     <ModesList

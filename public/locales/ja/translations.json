@@ -4,7 +4,8 @@
       "newGame": "新しいゲーム",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "アプリについて"
     },
     "newGameMode": {
       "timeLimit": {
@@ -18,13 +19,14 @@
       }
     },
     "lexicons": {
-      "title": "レキシコン",
+      "title": "$t(general.lexicon)",
       "isBeta": "ベータ"
     },
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"

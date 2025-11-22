@@ -1,3 +1,4 @@
+import React from 'react'
 import { WithChildren } from "./types";
 
 export const MaybeRender = ({
@@ -7,3 +8,5 @@ export const MaybeRender = ({
     if (maybeRender) return (<>{children}</>)
     else return <></>
 }
+
+export type RMouseEvent = React.MouseEvent<HTMLDivElement>

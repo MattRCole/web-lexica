@@ -31,15 +31,6 @@
   margin-top: 1rem;
 }
 
-.home-game-options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.home-game-options>div:first-child {
-  margin-inline-end: 0.5rem;
-}
 
 .home-side-container {
   display: flex;
@@ -55,9 +46,17 @@
 }
 
 .home-game-buttons-side-a,
-.home-game-buttons-side-b {
+.home-game-buttons-side-b,
+.home-game-options-side-a,
+.home-game-options-side-b {
   display: flex;
 }
+
+.home-game-options {
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (orientation: landscape) {
   .home-side-container {
     flex-direction: row;
@@ -77,24 +76,86 @@
   .home-game-buttons-side-b {
     flex-direction: row;
     width: 100%;
+    position: relative;
   }
   .home-game-buttons-side-a>div,
-  .home-game-buttons-side-b>div {
+  .home-game-buttons-side-b>div,
+  .home-game-options-side-b>div {
     margin-inline-end: 1vw;
   }
   .home-game-buttons-side-a>div:last-child,
-  .home-game-buttons-side-b>div:last-child {
+  .home-game-buttons-side-b>div:last-child,
+  .home-game-options-side-b>div:last-child {
     margin-inline-end: 0;
   }
 
   .home-game-buttons-side-b>:first-child:last-child {
     width: 100%;
   }
+
+  .home-game-options-side-a {
+    display: none;
+  }
+  .home-game-options-side-b {
+    flex-direction: row;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .home-game-options {
+    margin-top: 1.5rem;
+    width: 80%;
+  }
+
+  .home-additional-details {
+    transition-timing-function: ease-out;
+    transition: 0.25;
+  }
+  .home-additional-details.dimmed {
+    transition-timing-function: ease-in;
+    transition: 0.25;
+    opacity: 40%;
+    cursor: pointer;
+  }
+
+  .home-additional-details-drawer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    height: 100vh;
+    width: 50%;
+    transition: 0.25s;
+    transition-timing-function: ease-out;
+  }
+  .home-additional-details-drawer.show-drawer-inactive {
+    transform: translateX(130%);
+  }
+  .home-additional-details-drawer.show-drawer-active {
+    transition: 0.25s;
+    transition-timing-function: ease-in;
+    transform: translateX(0);
+  }
+  .home-additional-details-drawer-lexicons {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
 }
 
 @media screen and (orientation: portrait) {
   .home-side-container {
     flex-direction: column;
+  }
+
+  .home-game-options>div:first-child {
+    margin-inline-end: 0.5rem;
+  }
+  .home-game-options {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .home-side-b {
+    display: none;
   }
 }
 /* .home>.main-title {

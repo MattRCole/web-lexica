@@ -12,6 +12,7 @@ import { logger } from '../util/logger'
 import { useSafeNavigateBack } from '../util/url'
 
 import './Lexicons.css'
+import { RMouseEvent } from '../util/elements'
 
 const getBetaLabel = (metadata?: MetadataV1, betaLabel: string = '') => {
   const getLabel = (text: string) => <div className="lexicons-lexicon-beta-label">{text}</div>
@@ -21,25 +22,19 @@ const getBetaLabel = (metadata?: MetadataV1, betaLabel: string = '') => {
 
 type LexiconProps = {
   languageCode: string,
-  metadata?: MetadataV1
+  metadata?: MetadataV1,
+  onClick: (langaugeCode: string, event: RMouseEvent) => void,
 }
 
 const Lexicon = ({
   languageCode,
-  metadata
+  metadata,
+  onClick,
 }: LexiconProps): JSX.Element => {
   const translations = useContext(Translations)
   const title = translations.languageTitlesFn(languageCode as any)
   const beta = getBetaLabel(metadata, translations.translationsFn('pages.lexicons.isBeta'))
   const currentCode = useLanguageCodeFromLocalStorage()
-
-  const back = useSafeNavigateBack()
-
-  const handleOnClick = useCallback(() => {
-    logger.debug('setting lexicon code...', languageCode)
-    setLanguageInLocalStorage(languageCode)
-    back()
-  }, [languageCode, back])
 
   const classes = makeClasses('lexicons-lexicon', {
     condition: currentCode === languageCode,
@@ -48,29 +43,46 @@ const Lexicon = ({
 
   return <div
     className={classes}
-    onClick={handleOnClick}
+    onClick={e => onClick(languageCode, e)}
   >
     <div className="lexicons-lexicon-title">{title}</div>
     {beta}
   </div>
 }
 
-const Lexicons = (): JSX.Element => {
+export const LexiconList = (props: { onClick?: (languageCode: string, event: RMouseEvent) => void, className?: string } ): JSX.Element => {
+  const { onClick: onClickProp, className = 'lexicons' } = props
   const { translationsFn } = useContext(Translations)
   const { loading, metadata } = useMultipleLanguageMetadata()
   const languages = Object.keys(metadata)
+
+  const back = useSafeNavigateBack()
+
+  const handleOnClick = useCallback((languageCode: string, e: RMouseEvent) => {
+    logger.debug('setting lexicon code...', languageCode)
+    setLanguageInLocalStorage(languageCode)
+    if (onClickProp) {
+      onClickProp(languageCode, e)
+      return
+    }
+    back()
+  }, [onClickProp, back])
+
 
   const getLexicon = (languageCode: string) => <Lexicon
       languageCode={languageCode}
       key={languageCode}
       metadata={metadata[languageCode]}
+      onClick={handleOnClick}
     />
 
-  if (loading) return <div className="Page lexicons-loading">{translationsFn('general.loading')}</div>
+  if (loading) return <div className={makeClasses(className, "lexicons-loading")}>{translationsFn('general.loading')}</div>
 
-  return <div className="Page lexicons scrollbar">
+  return <div className={className}>
     {languages.map(l => getLexicon(l))}
   </div>
 }
 
-export default Lexicons
+export default function() {
+  return <LexiconList className="Page lexicons scrollbar" />
+}

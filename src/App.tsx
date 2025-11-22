@@ -19,11 +19,53 @@ import Lexicons from './pages/Lexicons'
 import NewGameMode from './pages/NewGameMode'
 import SavedGames from './pages/SavedGames'
 import { useTranslation } from 'react-i18next'
-import { useCallback } from 'react'
+import { MouseEventHandler, useCallback, useMemo, useRef, useState } from 'react'
 import { Translations } from './translations'
 import { LanguageTitlesFn, TranslationsFn } from './translations/types'
 import Languages from './pages/Languages'
 import AndroidIntegration from './pages/AndroidIntegration'
+import Button from './component-lib/Button'
+import Drawer, { DrawerEnterFrom, useTemporaryDrawer } from './component-lib/Drawer'
+
+const directions = ['top', 'bottom', 'left', 'right'] as const
+const directionMap = {
+  'top': DrawerEnterFrom.TopToBottom,
+  'bottom': DrawerEnterFrom.BottomToTop,
+  'left': DrawerEnterFrom.LeftToRight,
+  'right': DrawerEnterFrom.RightToLeft
+}
+type Directions = (typeof directions)[number]
+function DrawerTest() {
+
+  const [drawerState, setDrawerState] = useState({ top: false, bottom: false, left: false, right: false})
+
+  const closeDirections = useMemo(
+    () => directions.reduce(
+      (acc, d) => ({ ...acc, [d]: () => {console.log(`closing ${d}`); setDrawerState(p => ({ ...p, [d]: false }))}}),
+      {} as {[D in Directions]: () => {}}
+    ),
+    [setDrawerState])
+  const refs: { [D in Directions]: React.MutableRefObject<HTMLDivElement | null> } = {
+    top: useRef(null),
+    bottom: useRef(null),
+    left: useRef(null),
+    right: useRef(null)
+  }
+
+  const eventWrappers: { [D in Directions]: (fn: MouseEventHandler<Element>) => MouseEventHandler<any> } = {
+    top: useTemporaryDrawer(refs.top, closeDirections.top),
+    bottom: useTemporaryDrawer(refs.bottom, closeDirections.bottom),
+    left: useTemporaryDrawer(refs.left, closeDirections.left),
+    right: useTemporaryDrawer(refs.right, closeDirections.right),
+  }
+
+  return <div
+    className='Page drawer-test'
+  >
+    {directions.map(direction => <Button key={direction} prompt={direction} onClick={eventWrappers[direction](() => setDrawerState(p => ({ ...p, [direction]: true })))}/>)}
+    {directions.map(d => <Drawer className={d} enterFrom={directionMap[d]} open={drawerState[d]} key={d} drawerRef={refs[d]}>{d}</Drawer>)}
+  </div>
+}
 
 function App() {
   logger.debug('loading app...')
@@ -71,6 +113,7 @@ function App() {
                   <Route path="/singleplayer" element={ <SinglePlayer />} />
                   <Route path="/lexicle/*" element={ <Lexicle/>} />
                   <Route path='/saved-games' element={ <SavedGames />} />
+                  <Route path='/drawer-test' element={ <DrawerTest />} />
                 </Routes>
               </>} />
             </Routes>

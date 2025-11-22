@@ -15,6 +15,8 @@ export type TranslationsKeys = {
     'score': string | number,
   },
   'pages.home.preferences': string,
+  'pages.home.about': string,
+  'pages.home.gameModeSelection': string,
   'pages.gameModes.title': string,
   'pages.gameModes.addGameMode': string,
   'pages.newGameMode.title': string,

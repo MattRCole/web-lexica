@@ -10,7 +10,9 @@
       "resumeGame": "Resume Game",
       "gameMode": "Mode: {{gameMode}}",
       "highScore": "High Score: {{score}}",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "About",
+      "gameModeSelection": "Game mode"
     },
     "gameModes": {
       "title": "Game Modes",
@@ -78,7 +80,7 @@
       "title": "Random"
     },
     "lexicons": {
-      "title": "Lexicon",
+      "title": "$t(general.lexicon)",
       "isBeta": "Beta"
     },
     "singleplayer": {

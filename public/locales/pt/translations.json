@@ -4,7 +4,9 @@
       "newGame": "Novo Jogo",
       "headlineTitle": "$t(general.lexica)",
       "multiplayer": "$t(general.multiplayer)",
-      "preferences": "$t(general.preferences)"
+      "preferences": "$t(general.preferences)",
+      "about": "Sobre",
+      "gameModeSelection": "Modo de jogo"
     },
     "newGameMode": {
       "gameModeName": {
@@ -27,12 +29,12 @@
       }
     },
     "lexicons": {
-      "title": "Léxico",
+      "title": "$t(general.lexicon)",
       "isBeta": "Beta"
     },
     "multiplayer": {
       "startGame": "Iniciar jogo",
-      "startGameHint": "Quando todos os jogadores estiverem prontos, todos vocês devem iniciar o jogo ao mesmo tempo.",
+      "startGameHint": "Quando todos os jogadores estiverem prontos, todos devem iniciar o jogo ao mesmo tempo.",
       "joinGameHint": "Quando todos os jogadores estiverem prontos, entre no jogo.",
       "joinGame": "Entrar no jogo",
       "wordCount_one": "{{count}} palavra",
@@ -52,7 +54,8 @@
     "preferences": {
       "title": "$t(general.preferences)",
       "language": "$t(general.language)",
-      "lexicon": "$t(general.lexicon)"
+      "lexicon": "$t(general.lexicon)",
+      "androidSettings": "$t(pages.androidIntegration.title)"
     },
     "languages": {
       "title": "$t(general.language)"
