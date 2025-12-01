@@ -2,6 +2,7 @@ import * as R from 'ramda'
 import { createContext, useCallback, useEffect, useReducer } from 'react'
 import type { Reducer } from 'react'
 import { logger } from '../util/logger'
+import type { EnumType } from '../util/types'
 
 export type ScoreState = {
   foundWords: string[],
@@ -12,20 +13,20 @@ export const ScoreAction = {
   AddGuess: 'add-guess'
 } as const
 
-type ScoreActionType = typeof ScoreAction[keyof typeof ScoreAction]
+type ScoreActionType = EnumType<typeof ScoreAction>
 
 export const ScoreType = {
   Letters: 'l',
   Length: 'w'
 } as const
 
-export type ScoreTypeType = typeof ScoreType[keyof typeof ScoreType]
+export type ScoreTypeType = EnumType<typeof ScoreType>
 
 const InternalScoreAction = {
   UpdateDictionary: 'update-dictionary'
 } as const
 
-type InternalScoreActionType = typeof InternalScoreAction[keyof typeof InternalScoreAction]
+type InternalScoreActionType = EnumType<typeof InternalScoreAction>
 
 export type ScoreReducerAction<A extends ScoreActionType> = {
   type: A,

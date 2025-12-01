@@ -2,7 +2,7 @@ import type { MouseEventHandler } from 'react'
 import { makeClasses } from '../util/classes'
 import Svg from './Svg.tsx'
 import { Link } from 'react-router-dom'
-import type { WithChildren } from '../util/types'
+import type { EnumType, WithChildren } from '../util/types'
 import constants, { useConstants } from '../style/constants'
 
 import './Button.css'
@@ -13,7 +13,7 @@ export const ButtonThemeType = {
   Emphasis: 'emphasis'
 } as const
 
-type ButtonThemeTypeType = typeof ButtonThemeType[keyof typeof ButtonThemeType]
+type ButtonThemeTypeType = EnumType<typeof ButtonThemeType>
 
 export const ButtonFontSizing = {
   Normal: 'normal',
@@ -21,7 +21,7 @@ export const ButtonFontSizing = {
   Subscript: 'subscript'
 } as const
 
-type ButtonFontSizingType = typeof ButtonFontSizing[keyof typeof ButtonFontSizing]
+type ButtonFontSizingType = EnumType<typeof ButtonFontSizing>
 
 export type ButtonProps = {
   /** @default {false} */

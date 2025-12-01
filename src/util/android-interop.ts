@@ -6,6 +6,7 @@ import { getSearchString } from '../game/url'
 import { logger } from './logger'
 
 import * as R from 'ramda'
+import type { EnumType } from './types'
 
 export const LocalStorage = {
   BehaviorSetting: 'android-interop-behavior',
@@ -18,7 +19,7 @@ export const AndroidDetectBehavior = {
   ActAsNonAndroid: 'force-non-android'
 } as const
 
-export type AndroidDetectBehaviorType = typeof AndroidDetectBehavior[keyof typeof AndroidDetectBehavior]
+export type AndroidDetectBehaviorType = EnumType<typeof AndroidDetectBehavior>
 
 export const redirectToApp = ({ ruleset, board, language }: { language: string, ruleset: Ruleset, board: string[] }) => {
   if (language.length === 0) {

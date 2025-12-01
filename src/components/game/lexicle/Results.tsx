@@ -18,6 +18,7 @@ import { Language } from '../../../game/language'
 import { makeClasses } from '../../../util/classes'
 import { getBaseUrl } from '../../../util/url'
 import { Translations } from '../../../translations'
+import type { EnumType } from '../../../util/types'
 
 const correctnessMap: { [C in LetterCorrectnessType]: string } = {
   [LetterCorrectness.Perfect]: '🟩',
@@ -30,7 +31,7 @@ const ShareType = {
   Link: 'Game Link'
 } as const
 
-type ShareTypeType = typeof ShareType[keyof typeof ShareType]
+type ShareTypeType = EnumType<typeof ShareType>
 
 const withPrefix = <T extends string>(suffix: T): `lexicleGameScreens.results.${T}` => `lexicleGameScreens.results.${suffix}`
 

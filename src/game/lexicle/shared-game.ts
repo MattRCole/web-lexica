@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { useLocation } from "react-router"
 import { parseURLSearch } from "../../util/url"
 import { getB64DelimitedURLBoard } from "../board/util"
+import type { EnumType } from "../../util/types"
 
 const UrlParam = {
   Board: 'b',
@@ -9,7 +10,7 @@ const UrlParam = {
   Language: 'l'
 } as const
 
-type UrlParamType = typeof UrlParam[keyof typeof UrlParam]
+type UrlParamType = EnumType<typeof UrlParam>
 
 type UrlParamMap = {
   [P in UrlParamType]: string

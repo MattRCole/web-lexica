@@ -6,6 +6,7 @@ import { utf8ToB64 } from '../util/base-64'
 import { HighestSupportedMinimumVersion } from '../util/compatibility-android'
 import { parseURLSearch } from '../util/url'
 import type { ScoreTypeType } from './score'
+import type { EnumType } from '../util/types'
 
 export const GameParamMap = {
   Board: 'b',
@@ -18,7 +19,7 @@ export const GameParamMap = {
   TimeAttack: 'ta'
 } as const
 
-export type GameParamMapType = typeof GameParamMap[keyof typeof GameParamMap]
+export type GameParamMapType = EnumType<typeof GameParamMap>
 
 export const encodeBoard = (board: string[]): string => {
   const stringified = board.join(',')

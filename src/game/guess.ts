@@ -3,6 +3,7 @@ import type { Dispatch, Reducer } from 'react'
 import { logger } from '../util/logger'
 import { deepCopyBoard, getBoard, getPossibleTravelDirections, getUnvisitedBoard } from './board/util'
 import type { Board, Coordinates } from './board/types'
+import type { EnumType } from '../util/types'
 
 export const GuessAction = {
   EnterLetter: 'enter-letter',
@@ -11,7 +12,7 @@ export const GuessAction = {
   __UpdateBoard: 'updateBoard'
 } as const
 
-type GuessActionEnumType = typeof GuessAction[keyof typeof GuessAction]
+type GuessActionEnumType = EnumType<typeof GuessAction>
 
 export type GuessActionType<A extends GuessActionEnumType> = {
   type: A

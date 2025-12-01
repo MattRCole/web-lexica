@@ -11,6 +11,7 @@ import React, {
 } from 'react'
 import type  { Reducer } from 'react'
 import { logger } from '../util/logger'
+import type { EnumType } from '../util/types'
 
 type TimerState = {
   remainingTime: number,
@@ -25,7 +26,7 @@ const TimerAction = {
   Reset: 'reset',
 } as const
 
-type TimerActionType = typeof TimerAction[keyof typeof TimerAction]
+type TimerActionType = EnumType<typeof TimerAction>
 
 type TimerReducerAction = {
   type: TimerActionType,

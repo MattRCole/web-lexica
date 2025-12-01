@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
+import type { EnumType } from "./types"
 
 export const VisibilityState = {
     Visible: 'visible',
     Hidden: 'hidden'
 } as const
 
-export type VisibilityStateType = typeof VisibilityState[keyof typeof VisibilityState]
+export type VisibilityStateType = EnumType<typeof VisibilityState>
 
 const getVisibilityState = () => document.visibilityState === 'hidden' ? VisibilityState.Hidden : VisibilityState.Visible
 

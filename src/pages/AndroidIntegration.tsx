@@ -4,6 +4,7 @@ import { useAndroidInteropSettings, AndroidDetectBehavior } from '../util/androi
 import type { AndroidDetectBehaviorType } from '../util/android-interop'
 import RadioList from '../components/RadioList'
 import type { RadioListOption } from '../components/RadioList'
+import type { EnumType } from '../util/types'
 
 
 // const AndroidDetectSettings = (): JSX.Element => {
@@ -18,7 +19,7 @@ const IntegrationOption = {
   ForceHide: AndroidDetectBehavior.ActAsNonAndroid,
 } as const
 
-type IntegrationOptionType = typeof IntegrationOption[keyof typeof IntegrationOption]
+type IntegrationOptionType = EnumType<typeof IntegrationOption>
 
 const AndroidIntegration = (): JSX.Element => {
   const { androidDetectBehavior, setAndroidDetectBehavior, autoAppRedirect, setAutoAppRedirect } = useAndroidInteropSettings()

@@ -3,6 +3,7 @@ import { getSearchString } from '../../game/url'
 import constants from '../../style/constants'
 import { useCssExp } from '../../util/css-parse'
 import { ScreenOrientation, useOrientation } from '../../util/hooks'
+import type { EnumType } from '../../util/types'
 import { getBaseUrl } from '../../util/url'
 import QrCode from '../QrCode'
 
@@ -11,7 +12,7 @@ export const Platform = {
   Web: 'web'
 } as const
 
-export type PlatformType = typeof Platform[keyof typeof Platform]
+export type PlatformType = EnumType<typeof Platform>
 
 const getMultiplayerUrl = (platform: PlatformType) => {
   switch (platform) {

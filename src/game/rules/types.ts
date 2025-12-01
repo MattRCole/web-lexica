@@ -1,5 +1,6 @@
 import type { Duration } from 'duration-fns'
 import type { ScoreTypeType } from '../score'
+import type { EnumType } from '../../util/types'
 
 export type RulesContext = {
   minimumWordLength: number,
@@ -24,7 +25,7 @@ export const LocalStorage = {
   DefaultRulesets: 'default-rulesets'
 } as const
 
-export type LocalStorageType = typeof LocalStorage[keyof typeof LocalStorage]
+export type LocalStorageType = EnumType<typeof LocalStorage>
 
 export const DefaultRulesets = {
   Sprint: 'sprint',
@@ -33,4 +34,4 @@ export const DefaultRulesets = {
   TimeAttack: 'time-attack'
 } as const
 
-export type DefaultRulesetsType = typeof DefaultRulesets[keyof typeof DefaultRulesets]
+export type DefaultRulesetsType = EnumType<typeof DefaultRulesets>

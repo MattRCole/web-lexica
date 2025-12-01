@@ -1,4 +1,5 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
+import type { EnumType } from '../../util/types'
 
 export const LetterCorrectness = {
   Perfect: 'perfect',
@@ -6,7 +7,7 @@ export const LetterCorrectness = {
   NotInWord: 'not-in-word'
 } as const
 
-export type LetterCorrectnessType = typeof LetterCorrectness[keyof typeof LetterCorrectness]
+export type LetterCorrectnessType = EnumType<typeof LetterCorrectness>
 
 export type LetterScore = { letter: string, correctness: LetterCorrectnessType }
 

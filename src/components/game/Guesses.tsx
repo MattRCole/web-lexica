@@ -5,6 +5,7 @@ import './Guesses.css'
 import { Guess as GuessContext } from '../../game/guess'
 import { makeClasses } from '../../util/classes'
 import { Score } from '../../game/score'
+import type { EnumType } from '../../util/types'
 
 type GuessProps = {
   guess: string,
@@ -37,7 +38,7 @@ export const GuessOrientation = {
   Horizontal: 'horizontal'
 } as const
 
-export type GuessOrientationType = typeof GuessOrientation[keyof typeof GuessOrientation]
+export type GuessOrientationType = EnumType<typeof GuessOrientation>
 
 export type GuessesProps = {
  orientation: GuessOrientationType

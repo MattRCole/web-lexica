@@ -4,6 +4,7 @@ import RadioButtonChecked from '@material-design-icons/svg/round/radio_button_ch
 
 import Svg from './Svg'
 import { useConstants } from '../style/constants'
+import type { EnumType } from '../util/types'
 
 export const RadioSize = {
   Subscript:'subscript',
@@ -11,7 +12,7 @@ export const RadioSize = {
   Title: 'title'
 } as const
 
-export type RadioSizeType = typeof RadioSize[keyof typeof RadioSize]
+export type RadioSizeType = EnumType<typeof RadioSize>
 
 export type RadioProps<T extends string | number | readonly string[]> = {
   title: string,

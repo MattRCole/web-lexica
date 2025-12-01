@@ -1,3 +1,4 @@
+import type { EnumType } from "../../util/types"
 import type { GuessContext } from "../guess"
 import type { LanguageContext, MetadataV1 } from "../language"
 import type { RulesContext, Ruleset } from "../rules"
@@ -28,7 +29,7 @@ export const GameLocalStorage = {
   Language: 'language'
 } as const
 
-export type GameLocalStorageType = typeof GameLocalStorage[keyof typeof GameLocalStorage]
+export type GameLocalStorageType = EnumType<typeof GameLocalStorage>
 
 export const gameLocalStorage = [
   GameLocalStorage.Score,

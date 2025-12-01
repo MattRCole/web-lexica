@@ -9,6 +9,7 @@ import { Rules } from '../game/rules'
 import { Score as ScoreContext } from '../game/score'
 import { makeClasses } from '../util/classes'
 import Button, { ButtonThemeType } from './Button'
+import type { EnumType } from '../util/types'
 
 import './ResultsScreen.css'
 import { Translations } from '../translations'
@@ -18,7 +19,7 @@ const Lists = {
   MissedWords: 'missed'
 } as const
 
-type ListsType = typeof Lists[keyof typeof Lists]
+type ListsType = EnumType<typeof Lists>
 
 type ListSelectorProps = {
   listName: ListsType,

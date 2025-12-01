@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useReducer, useState } from 'react'
 import type { Reducer } from 'react'
 
 import { logger } from './logger'
+import type { EnumType } from './types'
 
 export const ElementIdentifier = {
   Class: 'class',
@@ -9,7 +10,7 @@ export const ElementIdentifier = {
   Type: 'type'
 } as const
 
-type ElementIdentifierType = typeof ElementIdentifier[keyof typeof ElementIdentifier]
+type ElementIdentifierType = EnumType<typeof ElementIdentifier>
 
 const getElementBasedOnIdentifier = (type: ElementIdentifierType, identifier: string) => {
   switch (type) {
@@ -100,7 +101,7 @@ export const ScreenOrientation = {
   Portrait: 'portrait'
 } as const
 
-export type ScreenOrientationType = typeof ScreenOrientation[keyof typeof ScreenOrientation]
+export type ScreenOrientationType = EnumType<typeof ScreenOrientation>
 
 type OrientationAction = { width: number, height: number }
 

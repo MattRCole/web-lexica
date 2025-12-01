@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useReducer, useState } f
 import { Score } from '../../../game/score'
 import { Guess } from '../../../game/guess'
 import { logger } from '../../../util/logger'
+import type { EnumType } from '../../../util/types'
 
 const ConfirmationFeedback = {
   Correct: 'correct',
@@ -10,7 +11,7 @@ const ConfirmationFeedback = {
   Incorrect: 'incorrect'
 }
 
-type ConfirmationFeedbackType = typeof ConfirmationFeedback[keyof typeof ConfirmationFeedback]
+type ConfirmationFeedbackType = EnumType<typeof ConfirmationFeedback>
 
 const getConfirmationType = (lastGuess: string, { foundWords, remainingWords }: { foundWords: string[], remainingWords: string[] }, guesses: string[]): ConfirmationFeedbackType => {
   const lastFoundWord = foundWords[foundWords.length -1]

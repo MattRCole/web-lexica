@@ -6,6 +6,7 @@ import { usePromise } from '../util/hooks'
 import { logger } from '../util/logger'
 import { storage, useStorage } from '../util/storage'
 import { getBaseUrl } from '../util/url'
+import type { EnumType } from '../util/types'
 
 export type MetadataV1 = {
   name: string,
@@ -27,7 +28,7 @@ export const LocalStorage = {
   LanguageCode: 'game-language'
 } as const
 
-export type LocalStorageType = typeof LocalStorage[keyof typeof LocalStorage]
+export type LocalStorageType = EnumType<typeof LocalStorage>
 
 const getAvailableLanguages = () => axios.get<string[]>(
   `${getBaseUrl()}/lexica/api/v1/languages.json`
