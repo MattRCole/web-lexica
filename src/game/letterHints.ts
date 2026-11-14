@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext } from 'react'
-import { ScoreContext } from './score'
-import { HintState, getLetterHints } from './dictionary'
+import { type ScoreContext } from './score'
+import { type HintState, getLetterHints } from './dictionary'
 import * as R from 'ramda'
 import { logger } from '../util/logger'
 import { getBoard } from './board/util'
