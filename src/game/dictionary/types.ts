@@ -1,12 +1,14 @@
-import { Board, Coordinates } from '../board/types'
+import type { Board, Coordinates } from '../board/types'
 
-export enum WorkerRequest {
-  ResolveBoardDictionary = 'board-dictionary',
-  ResolveBoardHints = 'board-hints'
-}
+export const WorkerRequest = {
+  ResolveBoardDictionary: 'board-dictionary',
+  ResolveBoardHints: 'board-hints'
+} as const
+
+export type WorkerRequestT = typeof WorkerRequest[keyof typeof WorkerRequest]
 
 export type ToWorkerMessage = {
-  requestType: WorkerRequest,
+  requestType: WorkerRequestT,
   info: ResolveBoardDictionary | ResolveBoardHints,
   requestId: string
 }

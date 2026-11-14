@@ -1,5 +1,5 @@
 import { logger } from '../../util/logger'
-import { ResolveBoardDictionary, ResolveBoardHints, ToWorkerMessage, WorkerRequest } from './types'
+import { type ResolveBoardDictionary, type ResolveBoardHints, type ToWorkerMessage, WorkerRequest } from './types'
 import { getHintsForBoard, getWordsOnBoard } from './util'
 
 const handleResolveBoardDictionary = ({ board, dictionary, minWordLength }: ResolveBoardDictionary) => {
@@ -11,7 +11,6 @@ const handleResolveBoardHints = ({ board, wordsOnBoard }: ResolveBoardHints) => 
   logger.debug('[Worker] Computed board hints', hints)
   return hints
 }
-
 onmessage = (e: MessageEvent<ToWorkerMessage>) => {
   const { info, requestType, requestId } = e.data
   const pm = (postMessage as any as (arg: any) => void)

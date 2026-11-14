@@ -15,7 +15,7 @@
         "newGameMode": {
             "gameModeName": {
                 "hint": "Ime",
-                "description": "Za biranje načina igre / zapisivanje najviših rezultata"
+                "description": "Za biranje modusa igre / zapisivanje najviših rezultata"
             },
             "timeLimit": {
                 "title": "Vremensko ograničenje",
@@ -43,13 +43,16 @@
             "joinGame": "Pridruži se igri",
             "wordCount_one": "{{count}} riječ",
             "wordCount_other": "{{count}} riječi",
-            "refreshBoard": "Osvježi ploču",
+            "refreshBoard": "Aktualiziraj ploču",
             "title": "Više igrača",
             "gameTitle": "Web Lexica igra za više igrača",
-            "newGameTitle": "Nova Web Lexica igra za više igrača"
+            "newGameTitle": "Nova Web Lexica igra za više igrača",
+            "openInAppPrompt": "Otvori u aplikaciji",
+            "alwaysOpenInAppPrompt": "Uvijek otvori u aplikaciji",
+            "alwaysOpenInAppConfirmation": "Dijeljene igre će se sada uvijek otvarati u aplikaciji. Ovu postavku možeš promijeniti u postavkama."
         },
         "lexicons": {
-            "title": "Leksikon",
+            "title": "$t(general.lexicon)",
             "isBeta": "Beta"
         },
         "savedGames": {
@@ -84,10 +87,22 @@
         "preferences": {
             "title": "$t(general.preferences)",
             "language": "$t(general.language)",
-            "lexicon": "$t(general.lexicon)"
+            "lexicon": "$t(general.lexicon)",
+            "androidSettings": "$t(pages.androidIntegration.title)"
         },
         "languages": {
             "title": "$t(general.language)"
+        },
+        "androidIntegration": {
+            "autoRedirectPrompt": "Uvijek otvori dijeljene igre u aplikaciji",
+            "forceShowAndroidSettingsPrompt": "Pokaži gumb „Otvori u aplikaciji”",
+            "forceShowAndroidSettingsHint": "Pokaži prozor za otvaranje dijeljene igre u aplikaciji Android Lexica.",
+            "autoDetectAndroidPrompt": "Pokaži opciju „Otvori u aplikaciji” ako se otkrije Android",
+            "title": "Potavke Android aplikacije",
+            "autoDetectAndroidHint": "Standardno ponašanje. Ako se tvoja vrsta uređaja ne prepozna, odaberi jednu od drugih opcija.",
+            "autoRedirectHint": "Prilikom otvaranja dijeljene igre, web stranica će pokušati otvoriti aplikaciju Android Lexica.",
+            "forceHideAndroidSettingsPrompt": "Sakrij gumb „Otvori u aplikaciji”",
+            "forceHideAndroidSettingsHint": "Sakrij prozor za otvaranje dijeljene igre u aplikaciji Android Lexica."
         }
     },
     "gameModeDetails": {
@@ -108,7 +123,7 @@
         "time": "Vrijeme",
         "words": "Riječi",
         "score": "Rezultat",
-        "displayPercentage": "{{found}}/{{total}} ({{percentage}} %)",
+        "displayPercentage": "{{found}}/{{total}} ({{percentage}} %)",
         "wordLength": "Duljina riječi",
         "letterPoints": "Bodovi za riječi"
     },
@@ -128,8 +143,8 @@
         "results": {
             "shareScore": "Dijeli rezultat",
             "shareGame": "Dijeli igru",
-            "shareScoreConfirmationText": "Rezultat kopiran u međuspremnik!",
-            "shareGameConfirmationText": "Poveznica za igru kopirana u međuspremnik!",
+            "shareScoreConfirmationText": "Rezultat je kopiran u međuspremnik!",
+            "shareGameConfirmationText": "Poveznica za igru je kopirana u međuspremnik!",
             "shareGameTextWordOfTheDay": "Lexicle riječ dana {{date}} {{numericScore}}\n\n{{visualScore}}\n\nProbaj nadmašiti moj rezultat: {{url}}",
             "shareScoreTextWordOfTheDay": "Lexicle riječ dana {{date}} {{numericScore}}\n\n{{visualScore}}",
             "shareScoreText": "Lexicle {{numericScore}}\n\n{{visualScore}}",
