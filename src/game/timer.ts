@@ -75,14 +75,6 @@ const handleResetTime = (state: TimerState, time: Duration) => {
   }
 }
 
-const handleEndTimer = (state: TimerState): TimerState => {
-  return {
-    ...state,
-    remainingTime: 1,
-    isPaused: false,
-  }
-}
-
 const timerReducer = (state: TimerState, action: TimerReducerAction) => {
   logger.debug('running timer reducer', JSON.stringify({ action }))
   switch (action.type) {
@@ -94,8 +86,6 @@ const timerReducer = (state: TimerState, action: TimerReducerAction) => {
       return handleAddTime(state, action.info as Duration)
     case TimerAction.Reset:
       return handleResetTime(state, action.info as Duration)
-    case TimerAction.End:
-      return handleEndTimer(state)
     default:
       throw new Error(`${action.type} has not been implemented yet`)
   }
@@ -104,7 +94,6 @@ const timerReducer = (state: TimerState, action: TimerReducerAction) => {
 export type UseTimer = {
   startTime: () => void,
   pauseTime: () => void,
-  endTimer: () => void,
   addTime: (time: Duration) => void,
   addTimerEndCallback: (callback: () => void ) => void,
   removeTimerEndCallback: (callback: () => void) => void,
@@ -164,9 +153,6 @@ export const useTimer = (totalTimeInSeconds: number): UseTimer => {
   const addTime = useCallback((time: Duration) => {
     dispatch({ type: TimerAction.AddTime, info: time })
   }, [dispatch])
-  const endTimer = useCallback(() => {
-    dispatch({ type: TimerAction.End, info: undefined })
-  }, [dispatch])
 
   const getRemainingTime = useCallback(() => state.remainingTime - secondsBetweenDates(state.startTime, new Date()), [state])
 
@@ -211,7 +197,6 @@ export const useTimer = (totalTimeInSeconds: number): UseTimer => {
     () => ({
       startTime,
       pauseTime,
-      endTimer,
       getRemainingTime,
       addTimerEndCallback,
       removeTimerEndCallback,
@@ -221,7 +206,6 @@ export const useTimer = (totalTimeInSeconds: number): UseTimer => {
     [startTime,
     pauseTime,
     getRemainingTime,
-    endTimer,
     addTime,
     state,
     addTimerEndCallback,
@@ -236,7 +220,6 @@ export const Timer = createContext<TimerContext>({
   startTime: () => {},
   pauseTime: () => {},
   addTime: (_: Duration) => {},
-  endTimer: () => {},
   addTimerEndCallback: (_: any) => undefined,
   removeTimerEndCallback: (_: any) => undefined,
   getRemainingTime: () => 0,
